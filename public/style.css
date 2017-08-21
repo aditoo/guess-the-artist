@@ -20,11 +20,11 @@
 }
 
 .panel{
-  height: 320;
+  height: inherit;
 }
 
 .game-body{
-  height: 320;
+  height: 220px;
 }
 
 #first-guess-name{

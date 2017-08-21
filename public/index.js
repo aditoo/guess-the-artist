@@ -47,6 +47,15 @@ function drawArtists() {
 function resetRound(){
   guessCounter = 1;
   roundNumber++;
+  if(roundNumber == 6){
+    alert("Game Over. Your Total Score is: " + score);
+    guessCounter = 1;
+    roundNumber = 1;
+    score = 0;
+  }
+  else{
+    startButton.disabled = false;
+  }
   roundNumberPlace.childNodes[0].nodeValue = "Round " + roundNumber;
   pointsForRoundPlace.childNodes[0].nodeValue = "For 5 points";
   totalScorePlace.childNodes[0].nodeValue = score;
@@ -59,12 +68,6 @@ function resetRound(){
   guessText.value = '';
   artwork.style.display = 'none';
   subButton.disabled = true;
-  if(roundNumber == 6){
-    alert("Game Over. Your Total Score is: " + score);
-  }
-  else{
-    startButton.disabled = false;
-  }
 }
 startButton.onclick = function myFunction() {
   const getArtistID = new XMLHttpRequest();
