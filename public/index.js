@@ -144,11 +144,13 @@ subButton.onclick = function myFunction() {
   else{
     guessText.value = '';
     guessCounter++;
+    subButton.disabled = true;
     message.classList.add("alert-danger");
     var wrong = document.createTextNode("Wrong answer...");
     message.appendChild(wrong);
     message.style.visibility = "visible";
     setTimeout(function(){
+      subButton.disabled = false;
       message.style.visibility = "hidden";
       message.classList.remove("alert-danger");
       message.removeChild(message.childNodes[0]);
