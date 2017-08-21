@@ -1,0 +1,20 @@
+{
+  "name": "guess-the-artist",
+  "version": "1.0.0",
+  "description": "Guess the artist game",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aditoo/guess-the-artist.git"
+  },
+  "author": "Adi Topaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aditoo/guess-the-artist/issues"
+  },
+  "homepage": "https://github.com/aditoo/guess-the-artist#readme"
+}
