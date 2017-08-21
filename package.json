@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
+  "dependencies": {
+    "express": "^4.15.3"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aditoo/guess-the-artist.git"
@@ -17,4 +20,5 @@
     "url": "https://github.com/aditoo/guess-the-artist/issues"
   },
   "homepage": "https://github.com/aditoo/guess-the-artist#readme"
+
 }
