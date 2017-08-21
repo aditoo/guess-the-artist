@@ -1,0 +1,48 @@
+#artwork {
+  display: none;
+  vertical-align: text-top;
+}
+
+.artwork{
+  height: 110px;
+}
+.list-group{
+  height: inherit;;
+}
+
+.list-group-item{
+  border-color: #FFFFFF;
+  font-size: 16px;
+}
+
+.panel-default{
+  height: inherit;;
+}
+
+.panel{
+  height: 320;
+}
+
+.game-body{
+  height: 320;
+}
+
+#first-guess-name{
+  display: none;
+}
+
+#sec-guess-name{
+  display: none;
+}
+
+#third-guess-name{
+  display: none;
+}
+
+button:disabled{
+  color: #CCCCCC;
+}
+
+.alert-success{
+  visibility: hidden;
+}
