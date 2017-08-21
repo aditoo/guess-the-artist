@@ -83,29 +83,23 @@ function resetRound() {
 startButton.onclick = function myFunction() {
   const getArtistID = new XMLHttpRequest();
   var currentArtist = artistsList[drawnArtists[roundNumber - 1] - 1];
-  console.log(currentArtist);
   const url = "https://itunes.apple.com/search?media=music&entity=musicArtist&term=";
   if (currentArtist.indexOf(" ") == -1) {
     getArtistID.open("GET", url.concat(currentArtist), false);
-    console.log(url.concat(currentArtist));
   } else {
     getArtistID.open("GET", url.concat(currentArtist.replace(" ", "+")), false);
-    console.log(url.concat(currentArtist.replace(" ", "+")));
   }
   getArtistID.send();
   var artistID = JSON.parse(getArtistID.response).results[0].artistId;
-  console.log(artistID);
   const getAlbums = new XMLHttpRequest();
   const albumsURL = "https://itunes.apple.com/lookup?entity=album&id=";
   getAlbums.open("GET", albumsURL.concat(artistID), false);
-  console.log(albumsURL.concat(artistID));
   getAlbums.send();
   var records = JSON.parse(getAlbums.response).results;
   var numOfAlbums = JSON.parse(getAlbums.response).resultCount - 1;
   var drawnAlbums = drawAlbums(numOfAlbums);
   var firstAlbumName = document.createTextNode(records[drawnAlbums[0]].collectionName);
   firstGuess.appendChild(firstAlbumName);
-  console.log(firstAlbumName);
   var secAlbumName = document.createTextNode(records[drawnAlbums[1]].collectionName);
   secGuess.appendChild(secAlbumName);
   var thirdAlbumName = document.createTextNode(records[drawnAlbums[2]].collectionName);
