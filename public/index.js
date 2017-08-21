@@ -6,6 +6,7 @@ const artistsList = ["jack johnson", "queen", "beatles", "rihanna", "sia", "brit
 const roundNumberPlace = document.getElementById("round-number");
 const pointsForRoundPlace = document.getElementById("point-for-round");
 const totalScorePlace = document.getElementById("score-counter");
+const finalScorePlace = document.getElementById("final-score");
 const guessText = document.getElementById("guess-box");
 const firstGuess = document.getElementById("first-guess-name");
 const secGuess = document.getElementById("sec-guess-name");
@@ -14,16 +15,23 @@ const artwork = document.getElementById("artwork");
 const startButton = document.getElementById("start-game");
 const subButton = document.getElementById("guess");
 const drawnArtists = drawArtists();
+const message = document.getElementById("message");
+const basicModal = document.getElementById("basicModal");
+const restartButton = document.getElementById("restart-button");
 
 function load(){
   var roundNumberText = document.createTextNode("Round " + roundNumber);
   var pointsForRoundText = document.createTextNode("For 5 points");
   var totalScoreText = document.createTextNode("0");
+  var finalScoreText = document.createTextNode("0");
   roundNumberPlace.appendChild(roundNumberText);
   pointsForRoundPlace.appendChild(pointsForRoundText);
   totalScorePlace.appendChild(totalScoreText);
+  finalScorePlace.appendChild(finalScoreText);
   subButton.disabled = true;
 }
+
+restartButton.onclick = function(){window.location.reload();}
 
 function drawAlbums(numOfAlbums) {
   var arr = []
@@ -48,7 +56,9 @@ function resetRound(){
   guessCounter = 1;
   roundNumber++;
   if(roundNumber == 6){
-    alert("Game Over. Your Total Score is: " + score);
+    //alert("Game Over. Your Total Score is: " + score);
+    finalScorePlace.childNodes[0].nodeValue = score;
+    $("#basicModal").modal();
     guessCounter = 1;
     roundNumber = 1;
     score = 0;
@@ -103,7 +113,7 @@ startButton.onclick = function myFunction() {
   artwork.src = records[drawnAlbums[2]].artworkUrl100;
   firstGuess.style.display = 'block';
   startButton.disabled = true;
-  startButton.childNodes[0].nodeValue = "Next Round"
+  startButton.childNodes[0].nodeValue = "Next Round";
   subButton.disabled = false;
 }
 
@@ -121,12 +131,28 @@ subButton.onclick = function myFunction() {
         score += 1;
     }
     resetRound();
-    //document.getElementById("correct").style.visibility = "visible";
-    //setTimeout(function(){document.getElementById("correct").style.visibility = "hidden";},2000);
+    message.classList.add("alert-success");
+    var correct = document.createTextNode("Correct!");
+    message.appendChild(correct);
+    message.style.visibility = "visible";
+    setTimeout(function(){
+      message.style.visibility = "hidden";
+      message.classList.remove("alert-success");
+      message.removeChild(message.childNodes[0]);
+    },1000);
   }
   else{
     guessText.value = '';
     guessCounter++;
+    message.classList.add("alert-danger");
+    var wrong = document.createTextNode("Wrong answer...");
+    message.appendChild(wrong);
+    message.style.visibility = "visible";
+    setTimeout(function(){
+      message.style.visibility = "hidden";
+      message.classList.remove("alert-danger");
+      message.removeChild(message.childNodes[0]);
+    },1000);
   }
 
   if(guessCounter == 2){

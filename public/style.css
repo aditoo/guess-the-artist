@@ -1,3 +1,11 @@
+body{
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+}
+
 #artwork {
   display: none;
   vertical-align: text-top;
@@ -12,7 +20,7 @@
 
 .list-group-item{
   border-color: #FFFFFF;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .panel-default{
@@ -20,11 +28,7 @@
 }
 
 .panel{
-  height: inherit;
-}
-
-.game-body{
-  height: 220px;
+  height: 330px;
 }
 
 #first-guess-name{
@@ -43,6 +47,6 @@ button:disabled{
   color: #CCCCCC;
 }
 
-.alert-success{
+#message{
   visibility: hidden;
 }
