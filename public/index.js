@@ -1,8 +1,7 @@
-
 var guessCounter = 1;
 var roundNumber = 1;
 var score = 0;
-const artistsList = ["jack johnson", "queen", "beatles", "rihanna", "sia", "britney spears", "justin timberlake", "chainsmokers", "imagine dragons", "ed sheeran"];
+const artistsList = ["jack johnson", "queen", "the beatles", "rihanna", "sia", "britney spears", "justin timberlake", "the chainsmokers", "imagine dragons", "ed sheeran", "bob marley", "jason mraz", "red hot chili peppers", "michael jackson", "3 doors down", "aerosmith", "radiohead", "pink floyd", "backstreet Boys", "madonna"];
 const roundNumberPlace = document.getElementById("round-number");
 const pointsForRoundPlace = document.getElementById("point-for-round");
 const totalScorePlace = document.getElementById("score-counter");
@@ -19,7 +18,7 @@ const message = document.getElementById("message");
 const basicModal = document.getElementById("basicModal");
 const restartButton = document.getElementById("restart-button");
 
-function load(){
+function load() {
   var roundNumberText = document.createTextNode("Round " + roundNumber);
   var pointsForRoundText = document.createTextNode("For 5 points");
   var totalScoreText = document.createTextNode("0");
@@ -31,13 +30,15 @@ function load(){
   subButton.disabled = true;
 }
 
-restartButton.onclick = function(){window.location.reload();}
+restartButton.onclick = function() {
+  window.location.reload();
+}
 
 function drawAlbums(numOfAlbums) {
   var arr = []
-  while(arr.length < 3){
+  while (arr.length < 3) {
     var randomnumber = Math.ceil(Math.random() * numOfAlbums);
-    if(arr.indexOf(randomnumber) > -1) continue;
+    if (arr.indexOf(randomnumber) > -1) continue;
     arr[arr.length] = randomnumber;
   }
   return arr;
@@ -45,25 +46,25 @@ function drawAlbums(numOfAlbums) {
 
 function drawArtists() {
   var arr = []
-  while(arr.length < 5){
-    var randomnumber = Math.ceil(Math.random() * 10);
-    if(arr.indexOf(randomnumber) > -1) continue;
+  while (arr.length < 5) {
+    var randomnumber = Math.ceil(Math.random() * 20);
+    if (arr.indexOf(randomnumber) > -1) continue;
     arr[arr.length] = randomnumber;
   }
   return arr;
 }
-function resetRound(){
+
+function resetRound() {
   guessCounter = 1;
   roundNumber++;
-  if(roundNumber == 6){
+  if (roundNumber == 6) {
     //alert("Game Over. Your Total Score is: " + score);
     finalScorePlace.childNodes[0].nodeValue = score;
     $("#basicModal").modal();
     guessCounter = 1;
     roundNumber = 1;
     score = 0;
-  }
-  else{
+  } else {
     startButton.disabled = false;
   }
   roundNumberPlace.childNodes[0].nodeValue = "Round " + roundNumber;
@@ -81,14 +82,13 @@ function resetRound(){
 }
 startButton.onclick = function myFunction() {
   const getArtistID = new XMLHttpRequest();
-  var currentArtist = artistsList[drawnArtists[roundNumber - 1] -1];
+  var currentArtist = artistsList[drawnArtists[roundNumber - 1] - 1];
   console.log(currentArtist);
   const url = "https://itunes.apple.com/search?media=music&entity=musicArtist&term=";
-  if(currentArtist.indexOf(" ") == -1){
+  if (currentArtist.indexOf(" ") == -1) {
     getArtistID.open("GET", url.concat(currentArtist), false);
     console.log(url.concat(currentArtist));
-  }
-  else{
+  } else {
     getArtistID.open("GET", url.concat(currentArtist.replace(" ", "+")), false);
     console.log(url.concat(currentArtist.replace(" ", "+")));
   }
@@ -118,8 +118,8 @@ startButton.onclick = function myFunction() {
 }
 
 subButton.onclick = function myFunction() {
-  var currentArtist = artistsList[drawnArtists[roundNumber - 1] -1];
-  if(guessText.value.toLowerCase() === currentArtist.toLowerCase()){
+  var currentArtist = artistsList[drawnArtists[roundNumber - 1] - 1];
+  if (guessText.value.toLowerCase() === currentArtist.toLowerCase()) {
     switch (guessCounter) {
       case 1:
         score += 5;
@@ -135,13 +135,12 @@ subButton.onclick = function myFunction() {
     var correct = document.createTextNode("Correct!");
     message.appendChild(correct);
     message.style.visibility = "visible";
-    setTimeout(function(){
+    setTimeout(function() {
       message.style.visibility = "hidden";
       message.classList.remove("alert-success");
       message.removeChild(message.childNodes[0]);
-    },1000);
-  }
-  else{
+    }, 1000);
+  } else {
     guessText.value = '';
     guessCounter++;
     subButton.disabled = true;
@@ -149,24 +148,24 @@ subButton.onclick = function myFunction() {
     var wrong = document.createTextNode("Wrong answer...");
     message.appendChild(wrong);
     message.style.visibility = "visible";
-    setTimeout(function(){
+    setTimeout(function() {
       subButton.disabled = false;
       message.style.visibility = "hidden";
       message.classList.remove("alert-danger");
       message.removeChild(message.childNodes[0]);
-    },1000);
+    }, 1000);
   }
 
-  if(guessCounter == 2){
+  if (guessCounter == 2) {
     secGuess.style.display = 'block';
     pointsForRoundPlace.childNodes[0].nodeValue = "For 3 points";
   }
-  if(guessCounter == 3){
+  if (guessCounter == 3) {
     thirdGuess.style.display = 'block';
     pointsForRoundPlace.childNodes[0].nodeValue = "For 1 point";
-    artwork.style.display ='inline';
+    artwork.style.display = 'inline';
   }
-  if(guessCounter == 4){
+  if (guessCounter == 4) {
     resetRound();
   }
 }
