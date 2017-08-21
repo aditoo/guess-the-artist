@@ -53,6 +53,9 @@ function resetRound(){
   firstGuess.style.display = 'none';
   secGuess.style.display = 'none';
   thirdGuess.style.display = 'none';
+  firstGuess.removeChild(firstGuess.childNodes[0]);
+  secGuess.removeChild(secGuess.childNodes[0]);
+  thirdGuess.removeChild(thirdGuess.childNodes[0]);
   guessText.value = '';
   artwork.style.display = 'none';
   subButton.disabled = true;
@@ -89,6 +92,7 @@ startButton.onclick = function myFunction() {
   var drawnAlbums = drawAlbums(numOfAlbums);
   var firstAlbumName = document.createTextNode(records[drawnAlbums[0]].collectionName);
   firstGuess.appendChild(firstAlbumName);
+  console.log(firstAlbumName);
   var secAlbumName = document.createTextNode(records[drawnAlbums[1]].collectionName);
   secGuess.appendChild(secAlbumName);
   var thirdAlbumName = document.createTextNode(records[drawnAlbums[2]].collectionName);
