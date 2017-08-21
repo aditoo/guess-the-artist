@@ -4,7 +4,7 @@ body{
     "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 16px;
-  background-color: #9A8F97;
+  background-color: #D3BCC2;
   color: #686567;
 }
 
@@ -71,4 +71,5 @@ input:focus{
 #start-game, #restart-button{
   background-color: #E9E3E6;
   border-color: #9A8F97;
+  color: #000000;
 }
