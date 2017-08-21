@@ -4,6 +4,8 @@ body{
     "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 16px;
+  background-color: #9A8F97;
+  color: #686567;
 }
 
 #artwork {
@@ -15,21 +17,23 @@ body{
   height: 110px;
 }
 .list-group{
-  height: inherit;;
+  height: inherit;
+
 }
 
 .list-group-item{
-  border-color: #FFFFFF;
   font-size: 18px;
+  background-color: #E9E3E6;
 }
 
 .panel-default{
-  height: inherit;;
+  background-color: #E9E3E6;
 }
 
-.panel{
+.game-area{
   height: 330px;
 }
+
 
 #first-guess-name{
   display: none;
@@ -49,4 +53,22 @@ button:disabled{
 
 #message{
   visibility: hidden;
+}
+
+#guess-box{
+  color: #686567;
+}
+input:focus{
+    outline: none;
+}
+#header{
+  color: #60585e;
+}
+#score-div{
+  padding: 10px;
+}
+
+#start-game, #restart-button{
+  background-color: #E9E3E6;
+  border-color: #9A8F97;
 }
